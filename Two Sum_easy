@@ -44,3 +44,21 @@ split()：將這個字串以空白（或其他分隔符號）為分隔，分割�
 map(int, ...)：將這個字串陣列中的每一個子字串都轉換成整數（int）型別。
 
 list(...)：將轉換後的整數序列轉換成數字陣列（List），並賦值給變數 my_list。"""
+
+
+#解答2
+nums = [2,7,11,15]
+target = 9
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        for i in range(len(nums)):
+            for j in range(i+1,len(nums)):
+                if nums[i] + nums[j] == target:
+                    return [i,j]
+s = Solution()
+result = s.twoSum(nums, target)
+print(result)
+
+這個程式碼將 twosum 函式改成了 twoSum 方法，加上了 Solution 類別的定義，並建立了 Solution 的實例 s 來呼叫方法
+延伸代表我在這個Soultion類別下可以建立更多的涵式,要調用的時候只要使用s.something就可以了
+
