@@ -1,8 +1,46 @@
-my_list = input("please input the nums:")#lst
-tagret = input("please input taget:")#int
+Question:
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
-for i in range len(lst(my_list)):
-    for j in range (1,len(lst(my_list))):
-        if my_list[i]+my_list[j]==int(target):
-            output = [i,j]
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
 
+You can return the answer in any order.
+#一開始我的寫法
+my_list = list(input("please input the nums:"))#lst
+target = int(input("please input target:"))#int
+def twosum(my_list):
+    for i in range (0,len(my_list)):
+        for j in range (1,len(my_list)):
+            if my_list[i]+my_list[j]==int(target):
+                result = [i,j]
+    print(i,j)
+    return [i,j]
+twosum(my_list)
+#自我寫法語法錯誤,沒有答案
+
+#解答
+input() 函数返回一个字符串，您需要使用 split() 方法将其转换为整数列表。
+函数定义中的参数应该包括 nums 和 target。
+在找到一组答案之后，应该立即返回结果，不必继续循环。
+在返回结果时，应该返回 result 而不是 [i,j]。
+下面是修改后的代码：
+my_list = list(map(int, input("please input the nums:").split()))
+target = int(input("please input target:"))
+
+def twosum(nums, target):
+    for i in range(0, len(nums)):
+        for j in range(i+1, len(nums)):
+            if nums[i] + nums[j] == target:
+                result = [i, j]
+                return result
+
+result = twosum(my_list, target)
+print(result)
+#----------------------------------------------------------------------------
+#my_list = list(map(int, input("please input the nums:").split()))
+"""input("please input the nums:")：在終端機（或命令列）中輸入一串數字，並回傳這串數字的字串。
+
+split()：將這個字串以空白（或其他分隔符號）為分隔，分割成多個子字串，並回傳一個字串陣列。
+
+map(int, ...)：將這個字串陣列中的每一個子字串都轉換成整數（int）型別。
+
+list(...)：將轉換後的整數序列轉換成數字陣列（List），並賦值給變數 my_list。"""
